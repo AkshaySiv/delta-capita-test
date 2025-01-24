@@ -23,6 +23,7 @@ __pycache__/
 # Ignore any build or distribution files
 build/
 dist/
+target/
 
 # Ignore any temporary or backup files
 *.bak

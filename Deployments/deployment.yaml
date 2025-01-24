@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: clients-api
-          image: docker.io/akshaysiv/delta-capita-test:latest
+          image: docker.io/akshaysiv/delta-capita-test:v1
           imagePullPolicy: Always
           ports:
             - containerPort: 8085
