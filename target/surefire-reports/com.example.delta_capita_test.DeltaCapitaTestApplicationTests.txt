@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.example.delta_capita_test.DeltaCapitaTestApplicationTests
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.338 s -- in com.example.delta_capita_test.DeltaCapitaTestApplicationTests
