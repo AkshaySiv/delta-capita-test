@@ -24,20 +24,14 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image') {
+        stage('Build and Push Docker Image') {
             steps {
                 script {
-                    echo 'Building Docker image...'
-                    sh "docker build -t ${DOCKER_IMAGE} -f Dockerfile ."
-                }
-            }
-        }
-
-        stage('Push Docker Image') {
-            steps {
-                script {
-                    echo 'Pushing Docker image to registry...'
-                    sh "docker push ${DOCKER_IMAGE}"
+                    echo 'Building and pushing Docker image using Docker plugin...'
+                    docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+                        def app = docker.build("${DOCKER_IMAGE}")
+                        app.push('latest')
+                    }
                 }
             }
         }
@@ -46,15 +40,14 @@ pipeline {
     post {
         always {
             echo 'Cleaning up after build...'
-            sh 'docker system prune -f'
         }
 
         success {
-            echo 'Completed successfully!'
+            echo 'Build, test, and deployment completed successfully!'
         }
 
         failure {
-            echo 'Deployment failed!'
+            echo 'Build, test, or deployment failed!'
         }
     }
 }
