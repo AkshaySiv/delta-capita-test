@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: clients-api-ingress
+  namespace: delta-capita-test
+spec:
+  rules:
+    - host: clients.api.deltacapita.com
+      http:
+        paths:
+          - path: /users
+            pathType: Prefix
+            backend:
+              service:
+                name: clients-api
+                port:
+                  number: 8085

@@ -1,0 +1,44 @@
+# Ignore all log files
+*.log
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore virtual environments
+.env/
+venv/
+
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+
+# Ignore IDE files (e.g., VSCode, IntelliJ)
+.vscode/
+.idea/
+
+# Ignore configuration files that contain sensitive information (example for credentials)
+*.env
+
+# Ignore any build or distribution files
+build/
+dist/
+target/
+
+# Ignore any temporary or backup files
+*.bak
+*.swp
+*.swo
+*~
+
+# Ignore specific directories or files related to `idaa` (modify as needed)
+idaa-docker-local/
+*.pid
+
+# Ignore database files
+*.sqlite
+*.db
+
+# Ignore other files you don't want in Git
+*.tar.gz
+*.zip

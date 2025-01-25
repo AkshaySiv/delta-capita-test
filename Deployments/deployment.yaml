@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: clients-api-deployment
+  namespace: delta-capita-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: clients-api
+  template:
+    metadata:
+      labels:
+        app: clients-api
+    spec:
+      containers:
+        - name: clients-api
+          image: docker.io/akshaysiv/delta-capita-test:v1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8085
+          env:
+            - name: MONGO_DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret
+                  key: MONGO_DB_USERNAME
+            - name: MONGO_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret
+                  key: MONGO_DB_PASSWORD
+            - name: MONGO_DB_HOST
+              valueFrom:
+                  configMapKeyRef:
+                    name: mongo-config
+                    key: MONGO_DB_HOST
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-deployment
+  namespace: delta-capita-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongo
+  template:
+    metadata:
+      labels:
+        app: mongo
+    spec:
+      containers:
+        - name: mongo
+          image: mongo:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 27017
