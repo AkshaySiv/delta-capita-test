@@ -7,10 +7,12 @@ CICD pipeline architecture used for the test
 
 **Integration**
 
-I attempted to set up the required environment locally for testing purposes. The API is operational and responding successfully, but I encountered challenges completing the following components due to limitations of a local setup
+I attempted to set up the required environment locally. I have successfully set up the deployment with MongoDB as the datastore, and the API is responding by fetching details from MongoDB., but I encountered challenges completing the following components
  - Load Balancer
  - Issuer (let's encrypt)
  - Certificate Manager - clients.api.deltacapita.com
+
+
 
 
 
